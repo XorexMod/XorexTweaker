@@ -14,7 +14,7 @@
 [![Release](https://img.shields.io/github/v/release/XorexMod/XorexTweaker?color=6C5CE7&label=release)](../../releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/XorexMod/XorexTweaker/total?color=6C5CE7)](../../releases)
 
-[🌐 Сайт](https://xorextweaker.xo.je) · [📥 Скачать](../../releases/latest) · [🐛 Сообщить о баге](../../issues) · [💛 Поддержать](#-поддержать-автора)
+[🌐 Сайт](https://xorextweaker.xo.je) · [📥 Скачать](../../releases/latest) · [🐛 Сообщить о баге](../../issues) · [💛 Поддержать](https://boosty.to/xorexhome/donate)
 
 ---
 
