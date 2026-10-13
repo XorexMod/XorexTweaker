@@ -1,0 +1,58 @@
+{
+  "apps": [
+    { "id": "Google.Chrome", "name": "Google Chrome", "category": "Браузеры", "description": "Популярный браузер" },
+    { "id": "Mozilla.Firefox", "name": "Mozilla Firefox", "category": "Браузеры", "description": "Открытый браузер" },
+    { "id": "Brave.Brave", "name": "Brave", "category": "Браузеры", "description": "Приватный браузер" },
+    { "id": "Opera.Opera", "name": "Opera", "category": "Браузеры", "description": "Браузер с VPN" },
+    { "id": "Vivaldi.Vivaldi", "name": "Vivaldi", "category": "Браузеры", "description": "Гибкий браузер" },
+
+    { "id": "7zip.7zip", "name": "7-Zip", "category": "Утилиты", "description": "Архиватор" },
+    { "id": "RARLab.WinRAR", "name": "WinRAR", "category": "Утилиты", "description": "Архиватор" },
+    { "id": "Microsoft.PowerToys", "name": "PowerToys", "category": "Утилиты", "description": "Набор утилит Microsoft" },
+    { "id": "qBittorrent.qBittorrent", "name": "qBittorrent", "category": "Утилиты", "description": "Торрент-клиент" },
+    { "id": "Rufus.Rufus", "name": "Rufus", "category": "Утилиты", "description": "Запись ISO на USB" },
+    { "id": "CrystalDewWorld.CrystalDiskInfo", "name": "CrystalDiskInfo", "category": "Утилиты", "description": "Мониторинг дисков" },
+    { "id": "CPUID.HWMonitor", "name": "HWMonitor", "category": "Утилиты", "description": "Температуры и напряжения" },
+    { "id": "TechPowerUp.GPU-Z", "name": "GPU-Z", "category": "Утилиты", "description": "Информация о GPU" },
+    { "id": "Piriform.CCleaner", "name": "CCleaner", "category": "Утилиты", "description": "Очистка системы" },
+    { "id": "RevoUninstaller.RevoUninstaller", "name": "Revo Uninstaller", "category": "Утилиты", "description": "Полное удаление программ" },
+    { "id": "ShareX.ShareX", "name": "ShareX", "category": "Утилиты", "description": "Скриншоты и запись" },
+    { "id": "AutoHotkey.AutoHotkey", "name": "AutoHotkey", "category": "Утилиты", "description": "Автоматизация" },
+
+    { "id": "VideoLAN.VLC", "name": "VLC", "category": "Медиа", "description": "Медиаплеер" },
+    { "id": "Spotify.Spotify", "name": "Spotify", "category": "Медиа", "description": "Музыкальный стриминг" },
+    { "id": "OBSProject.OBSStudio", "name": "OBS Studio", "category": "Медиа", "description": "Запись и стриминг" },
+    { "id": "Audacity.Audacity", "name": "Audacity", "category": "Медиа", "description": "Аудиоредактор" },
+    { "id": "HandBrake.HandBrake", "name": "HandBrake", "category": "Медиа", "description": "Видеоконвертер" },
+    { "id": "GIMP.GIMP", "name": "GIMP", "category": "Медиа", "description": "Редактор изображений" },
+    { "id": "KDE.Krita", "name": "Krita", "category": "Медиа", "description": "Рисование" },
+    { "id": "Inkscape.Inkscape", "name": "Inkscape", "category": "Медиа", "description": "Векторный редактор" },
+    { "id": "BlenderFoundation.Blender", "name": "Blender", "category": "Медиа", "description": "3D-моделирование" },
+
+    { "id": "Microsoft.VisualStudioCode", "name": "VS Code", "category": "Разработка", "description": "Редактор кода" },
+    { "id": "Notepad++.Notepad++", "name": "Notepad++", "category": "Разработка", "description": "Продвинутый блокнот" },
+    { "id": "Git.Git", "name": "Git", "category": "Разработка", "description": "Система контроля версий" },
+    { "id": "Python.Python.3.12", "name": "Python 3.12", "category": "Разработка", "description": "Язык программирования" },
+    { "id": "OpenJS.NodeJS.LTS", "name": "Node.js LTS", "category": "Разработка", "description": "JS-рантайм" },
+    { "id": "Microsoft.WindowsTerminal", "name": "Windows Terminal", "category": "Разработка", "description": "Современный терминал" },
+    { "id": "Microsoft.PowerShell", "name": "PowerShell 7", "category": "Разработка", "description": "Современный PowerShell" },
+    { "id": "Docker.DockerDesktop", "name": "Docker Desktop", "category": "Разработка", "description": "Контейнеры" },
+    { "id": "JetBrains.Toolbox", "name": "JetBrains Toolbox", "category": "Разработка", "description": "Менеджер IDE" },
+
+    { "id": "Discord.Discord", "name": "Discord", "category": "Общение", "description": "Чат для геймеров" },
+    { "id": "Telegram.TelegramDesktop", "name": "Telegram Desktop", "category": "Общение", "description": "Мессенджер" },
+    { "id": "Zoom.Zoom", "name": "Zoom", "category": "Общение", "description": "Видеоконференции" },
+
+    { "id": "Valve.Steam", "name": "Steam", "category": "Игры", "description": "Игровая платформа" },
+    { "id": "EpicGames.EpicGamesLauncher", "name": "Epic Games", "category": "Игры", "description": "Игровая платформа" },
+    { "id": "GOG.Galaxy", "name": "GOG Galaxy", "category": "Игры", "description": "Игровая платформа" },
+
+    { "id": "Wireshark.Wireshark", "name": "Wireshark", "category": "Сеть", "description": "Анализатор трафика" },
+    { "id": "WinSCP.WinSCP", "name": "WinSCP", "category": "Сеть", "description": "SFTP/SMB-клиент" },
+    { "id": "PuTTY.PuTTY", "name": "PuTTY", "category": "Сеть", "description": "SSH/Telnet-клиент" },
+    { "id": "TeamViewer.TeamViewer", "name": "TeamViewer", "category": "Сеть", "description": "Удалённый доступ" },
+    { "id": "AnyDeskSoftwareGmbH.AnyDesk", "name": "AnyDesk", "category": "Сеть", "description": "Удалённый доступ" },
+    { "id": "Proton.ProtonVPN", "name": "Proton VPN", "category": "Сеть", "description": "VPN" },
+    { "id": "Mullvad.MullvadVPN", "name": "Mullvad VPN", "category": "Сеть", "description": "Приватный VPN" }
+  ]
+}

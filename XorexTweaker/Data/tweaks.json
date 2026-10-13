@@ -1,0 +1,353 @@
+{
+  "categories": [
+    {
+      "id": "ai_copilot",
+      "name": "ИИ и Copilot",
+      "icon": "🤖",
+      "tweaks": [
+        { "id": "copilot_off", "name": "Отключить Windows Copilot", "description": "Полностью отключает Copilot через политику. Только Win11.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsCopilot", "registryValue": "TurnOffWindowsCopilot", "valueType": "DWord", "onValue": "1", "offValue": "0", "requiresReboot": true },
+        { "id": "copilot_hklm_off", "name": "Отключить Copilot (HKLM)", "description": "Дополнительная блокировка через машинную политику.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsCopilot", "registryValue": "TurnOffWindowsCopilot", "valueType": "DWord", "onValue": "1", "offValue": "0", "requiresReboot": true },
+        { "id": "recall_off", "name": "Отключить Windows Recall", "description": "Запрещает Windows записывать всё, что ты делаешь на ПК.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI", "registryValue": "DisableAIDataAnalysis", "valueType": "DWord", "onValue": "1", "offValue": "0", "requiresReboot": true },
+        { "id": "click_to_do_off", "name": "Отключить Click to Do", "description": "Убирает анализ выделенного текста через ИИ.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI", "registryValue": "DisableClickToDo", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "copilot_taskbar_off", "name": "Убрать Copilot с панели задач", "description": "Скрывает иконку Copilot рядом с поиском.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "ShowCopilotButton", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "edge_copilot_off", "name": "Отключить Copilot в Edge", "description": "Убирает Copilot из браузера Edge.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge", "registryValue": "CopilotPageContext", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "edge_ai_theme_off", "name": "Отключить AI-темы Edge", "description": "Убирает генерацию тем через ИИ.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge", "registryValue": "AIGenThemesEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "paint_cocreator_off", "name": "Отключить Cocreator в Paint", "description": "Убирает ИИ-генерацию картинок.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint", "registryValue": "DisableCocreator", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "paint_ai_off", "name": "Отключить ИИ в Paint (полностью)", "description": "Убирает все ИИ-функции из Paint.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint", "registryValue": "DisableAIFeatures", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "notepad_ai_off", "name": "Отключить ИИ в Notepad", "description": "Убирает Copilot-кнопки в Блокноте.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Notepad", "registryValue": "DisableAIFeatures", "valueType": "DWord", "onValue": "1", "offValue": "0" }
+      ]
+    },
+    {
+      "id": "windows_features",
+      "name": "Компоненты Windows",
+      "icon": "🧩",
+      "tweaks": [
+        { "id": "hyperv_enable", "name": "Включить Hyper-V", "description": "Виртуализация Hyper-V. Требует перезагрузку.", "type": "Command", "onCommand": "dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /all /norestart", "offCommand": "dism /online /disable-feature /featurename:Microsoft-Hyper-V-All /norestart", "risky": true, "requiresReboot": true },
+        { "id": "wsl_enable", "name": "Включить WSL", "description": "Windows Subsystem for Linux. Требует перезагрузку.", "type": "Command", "onCommand": "dism /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart", "offCommand": "dism /online /disable-feature /featurename:Microsoft-Windows-Subsystem-Linux /norestart", "requiresReboot": true },
+        { "id": "vmp_enable", "name": "Включить Virtual Machine Platform", "description": "Нужен для WSL 2. Требует перезагрузку.", "type": "Command", "onCommand": "dism /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart", "offCommand": "dism /online /disable-feature /featurename:VirtualMachinePlatform /norestart", "requiresReboot": true },
+        { "id": "netfx3_enable", "name": "Включить .NET Framework 3.5", "description": "Нужен для старых программ. Требует перезагрузку.", "type": "Command", "onCommand": "dism /online /enable-feature /featurename:NetFx3 /all /norestart", "offCommand": "dism /online /disable-feature /featurename:NetFx3 /norestart", "requiresReboot": true },
+        { "id": "sandbox_enable", "name": "Включить Windows Sandbox", "description": "Песочница для безопасного запуска подозрительных программ.", "type": "Command", "onCommand": "dism /online /enable-feature /featurename:Containers-DisposableClientVM /all /norestart", "offCommand": "dism /online /disable-feature /featurename:Containers-DisposableClientVM /norestart", "requiresReboot": true },
+        { "id": "telnet_enable", "name": "Включить Telnet Client", "description": "Telnet-клиент для диагностики сетей.", "type": "Command", "onCommand": "dism /online /enable-feature /featurename:TelnetClient /all /norestart", "offCommand": "dism /online /disable-feature /featurename:TelnetClient /norestart" },
+        { "id": "tftp_enable", "name": "Включить TFTP Client", "description": "TFTP-клиент для сетевой диагностики.", "type": "Command", "onCommand": "dism /online /enable-feature /featurename:TftpClient /all /norestart", "offCommand": "dism /online /disable-feature /featurename:TftpClient /norestart" },
+        { "id": "ie_enable", "name": "Включить Internet Explorer", "description": "IE как отдельный компонент. Только для очень старых сайтов.", "type": "Command", "onCommand": "dism /online /enable-feature /featurename:Internet-Explorer-Optional-amd64 /all /norestart", "offCommand": "dism /online /disable-feature /featurename:Internet-Explorer-Optional-amd64 /norestart", "risky": true, "requiresReboot": true },
+        { "id": "print_services_disable", "name": "Отключить Print Services", "description": "Полное отключение печати. Экономит ресурсы если принтер не нужен.", "type": "Command", "onCommand": "dism /online /disable-feature /featurename:Printing-Foundation-Features /norestart & dism /online /disable-feature /featurename:Printing-Foundation-InternetPrinting-Client /norestart", "offCommand": "dism /online /enable-feature /featurename:Printing-Foundation-Features /all /norestart", "risky": true, "requiresReboot": true },
+        { "id": "nfs_enable", "name": "Включить NFS Services", "description": "Client for NFS. Для подключения к Unix-шарам.", "type": "Command", "onCommand": "dism /online /enable-feature /featurename:ServicesForNFS-ClientOnly /all /norestart & dism /online /enable-feature /featurename:ClientForNFS-Infrastructure /all /norestart", "offCommand": "dism /online /disable-feature /featurename:ServicesForNFS-ClientOnly /norestart" }
+      ]
+    },
+    {
+      "id": "maintenance",
+      "name": "Обслуживание системы",
+      "icon": "🛠️",
+      "tweaks": [
+        { "id": "sfc_scan", "name": "Запустить SFC /scannow", "description": "Проверка и восстановление системных файлов. Займёт 5-15 минут.", "type": "Command", "onCommand": "start cmd /k sfc /scannow", "offCommand": "echo SFC — одноразовая операция", "risky": true },
+        { "id": "dism_restore", "name": "Восстановить образ системы (DISM)", "description": "DISM /Online /Cleanup-Image /RestoreHealth. Лечит повреждённые компоненты Windows. 10-30 мин.", "type": "Command", "onCommand": "start cmd /k dism /online /cleanup-image /restorehealth", "offCommand": "echo DISM — одноразовая операция", "risky": true },
+        { "id": "dism_scan", "name": "Проверить образ без восстановления", "description": "DISM /Online /Cleanup-Image /ScanHealth. Быстрая проверка.", "type": "Command", "onCommand": "start cmd /k dism /online /cleanup-image /scanhealth", "offCommand": "echo DISM — одноразовая операция" },
+        { "id": "dism_cleanup", "name": "Очистить WinSxS (DISM)", "description": "Удаляет устаревшие компоненты из хранилища. Освобождает место.", "type": "Command", "onCommand": "start cmd /k dism /online /cleanup-image /startcomponentcleanup", "offCommand": "echo DISM — одноразовая операция" },
+        { "id": "reset_windows_update", "name": "Сбросить Windows Update", "description": "Останавливает WU, чистит SoftwareDistribution и catroot2. Лечит зависшие обновления.", "type": "Command", "onCommand": "net stop wuauserv & net stop bits & ren C:\\Windows\\SoftwareDistribution SoftwareDistribution.old & ren C:\\Windows\\System32\\catroot2 catroot2.old & net start wuauserv & net start bits", "offCommand": "echo Одноразовая операция", "risky": true },
+        { "id": "reset_store", "name": "Переустановить Microsoft Store", "description": "Полная перерегистрация Store. Лечит зависший магазин.", "type": "Command", "onCommand": "powershell -Command \"Get-AppxPackage -AllUsers Microsoft.WindowsStore | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register \\\"$($_.InstallLocation)\\AppXManifest.xml\\\"}\"", "offCommand": "echo Одноразовая операция", "risky": true },
+        { "id": "reregister_apps", "name": "Перерегистрировать все UWP-приложения", "description": "Чинит сломанные Metro-приложения.", "type": "Command", "onCommand": "powershell -Command \"Get-AppXPackage -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register \\\"$($_.InstallLocation)\\AppXManifest.xml\\\" -ErrorAction SilentlyContinue}\"", "offCommand": "echo Одноразовая операция", "risky": true },
+        { "id": "clean_temp", "name": "Очистить временные файлы", "description": "Удаляет Temp пользователя и системы.", "type": "Command", "onCommand": "del /q /f /s %TEMP%\\* & del /q /f /s C:\\Windows\\Temp\\*", "offCommand": "echo Одноразовая операция" },
+        { "id": "clear_dns", "name": "Очистить DNS-кэш", "description": "ipconfig /flushdns. Лечит проблемы с сетью.", "type": "Command", "onCommand": "ipconfig /flushdns", "offCommand": "echo Одноразовая операция" },
+        { "id": "clear_arp", "name": "Очистить ARP-кэш", "description": "netsh interface ip delete arpcache.", "type": "Command", "onCommand": "netsh interface ip delete arpcache", "offCommand": "echo Одноразовая операция" },
+        { "id": "clear_event_logs", "name": "Очистить журналы событий", "description": "Удаляет все записи из Event Viewer. Освобождает место.", "type": "Command", "onCommand": "for /F \"tokens=*\" %1 in ('wevtutil.exe el') DO wevtutil.exe cl \"%1\"", "offCommand": "echo Одноразовая операция", "risky": true }
+      ]
+    },
+    {
+      "id": "advanced",
+      "name": "Продвинутая настройка",
+      "icon": "🔬",
+      "tweaks": [
+        { "id": "hpet_off", "name": "Отключить HPET", "description": "bcdedit /deletevalue useplatformclock. Часто снижает задержки в играх.", "type": "Command", "onCommand": "bcdedit /deletevalue useplatformclock", "offCommand": "bcdedit /set useplatformclock true", "risky": true, "requiresReboot": true },
+        { "id": "dynamic_tick_off", "name": "Отключить dynamic tick", "description": "bcdedit /set disabledynamictick yes. Снижает задержки, но повышает энергопотребление.", "type": "Command", "onCommand": "bcdedit /set disabledynamictick yes", "offCommand": "bcdedit /set disabledynamictick no", "risky": true, "requiresReboot": true },
+        { "id": "platform_tick_policy", "name": "Platform Tick Policy (игры)", "description": "bcdedit /set platformtick. Альтернативный способ тонкой настройки таймера.", "type": "Command", "onCommand": "bcdedit /set platformtick off", "offCommand": "bcdedit /set platformtick default", "risky": true, "requiresReboot": true },
+        { "id": "mpo_disable", "name": "Отключить Multi-Plane Overlay (MPO)", "description": "Решает проблемы с мерцанием экрана и фризами на некоторых GPU.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\Dwm", "registryValue": "OverlayTestMode", "valueType": "DWord", "onValue": "5", "offValue": "0", "requiresReboot": true },
+        { "id": "svc_split_off", "name": "Отключить Split Threshold служб", "description": "SvcHostSplitThresholdInKB. Уменьшает количество процессов svchost в Диспетчере.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control", "registryValue": "SvcHostSplitThresholdInKB", "valueType": "DWord", "onValue": "16777216", "offValue": "0", "requiresReboot": true },
+        { "id": "spectre_meltdown_off", "name": "Отключить Spectre/Meltdown патчи", "description": "Повышает производительность CPU на 5-15%, но снижает защиту от уязвимостей. Риск!", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management", "registryValue": "FeatureSettingsOverride", "valueType": "DWord", "onValue": "3", "offValue": "0", "risky": true, "requiresReboot": true },
+        { "id": "spectre_override_mask", "name": "Дополнительная маска Spectre", "description": "FeatureSettingsOverrideMask для полного отключения патчей.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management", "registryValue": "FeatureSettingsOverrideMask", "valueType": "DWord", "onValue": "3", "offValue": "0", "risky": true, "requiresReboot": true },
+        { "id": "mouse_accel_off_adv", "name": "Raw Mouse Input (без ускорения)", "description": "Отключает сглаживание и ускорение на уровне системы.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Mouse", "registryValue": "MouseSensitivity", "valueType": "String", "onValue": "10", "offValue": "6" },
+        { "id": "menushowdelay_zero", "name": "Мгновенные меню (MenuShowDelay = 0)", "description": "Уже есть в perf, но здесь агрессивнее.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Desktop", "registryValue": "MenuShowDelay", "valueType": "String", "onValue": "0", "offValue": "400" },
+        { "id": "csrss_priority_high", "name": "Высокий приоритет CSRSS", "description": "Повышает приоритет подсистемы Win32. Может помочь в играх.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel", "registryValue": "CsrssPriority", "valueType": "DWord", "onValue": "1", "offValue": "0", "risky": true, "requiresReboot": true },
+        { "id": "mmcss_games_priority", "name": "MMCSS Games Priority = 6", "description": "Уже есть в gaming, но можно выставить агрессивнее.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games", "registryValue": "Priority", "valueType": "DWord", "onValue": "6", "offValue": "2" },
+        { "id": "disable_mitigations_nt", "name": "Отключить NT mitigations (риск)", "description": "DisableControlFlowGuard. Ускоряет ядро, но снижает безопасность.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Kernel", "registryValue": "MitigationOptions", "valueType": "QWord", "onValue": "0", "offValue": "8796093022208", "risky": true, "requiresReboot": true },
+        { "id": "numa_spread_off", "name": "Отключить NUMA Spreading", "description": "Для многоядерных CPU — может помочь в играх.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management", "registryValue": "NumaNodeSpreading", "valueType": "DWord", "onValue": "0", "offValue": "1", "risky": true, "requiresReboot": true },
+        { "id": "pagefile_custom", "name": "Кастомный файл подкачки", "description": "PagingFiles = 4096 8192 для C:. Настраивает размер вручную.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management", "registryValue": "PagingFiles", "valueType": "String", "onValue": "C:\\pagefile.sys 4096 8192", "offValue": "", "risky": true, "requiresReboot": true }
+      ]
+    },
+    {
+      "id": "pro_gaming",
+      "name": "Pro Gaming",
+      "icon": "🎯",
+      "tweaks": [
+        { "id": "nagle_off", "name": "Отключить Nagle's Algorithm", "description": "Снижает пинг в онлайн-играх (TCP_NODELAY для всех приложений).", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces", "registryValue": "TcpAckFrequency", "valueType": "DWord", "onValue": "1", "offValue": "2", "risky": true, "requiresReboot": true },
+        { "id": "tcp_delack_off", "name": "Отключить TCP Delayed ACK", "description": "TCPDelAckTicks = 0. Убирает задержки подтверждений.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces", "registryValue": "TCPDelAckTicks", "valueType": "DWord", "onValue": "0", "offValue": "1", "requiresReboot": true },
+        { "id": "xbox_gamebar_full_off", "name": "Полностью отключить Xbox Game Bar", "description": "Убирает не только DVR, но и всё оверлейное ПО Xbox.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\GameBar", "registryValue": "UseNexusForGameBarEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "xbox_dvr_all_off", "name": "Отключить ВСЕ функции Xbox DVR", "description": "GameDVR_Enabled, HistoricalCaptureEnabled, все сразу.", "type": "Registry", "registryPath": "HKCU\\System\\GameConfigStore", "registryValue": "GameDVR_HistoricalCaptureEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "disable_game_bar_startup", "name": "Убрать Game Bar из автозапуска", "description": "Не запускается при старте Windows.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameDVR", "registryValue": "StartupPanelEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "high_dpi_fix", "name": "High DPI Scaling Override", "description": "Убирает проблемы с мышью в играх на High DPI.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Desktop", "registryValue": "Win8DpiScaling", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "game_bar_tips_off", "name": "Отключить подсказки Game Bar", "description": "Убирает всплывающие приглашения.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\GameBar", "registryValue": "ShowStartupPanel", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "disable_auto_game_mode", "name": "Отключить авто-переключение Game Mode", "description": "AutoGameModeEnabled = 0. Для тех, у кого Game Mode конфликтует.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\GameBar", "registryValue": "AutoGameModeEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "foreground_lock_timeout", "name": "ForegroundLockTimeout = 0", "description": "Не даёт фоновым процессам перехватывать фокус во время игры.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Desktop", "registryValue": "ForegroundLockTimeout", "valueType": "DWord", "onValue": "0", "offValue": "200000" },
+        { "id": "mouse_hover_time_short", "name": "Быстрый отклик мыши (HoverTime)", "description": "MouseHoverTime = 10 мс вместо 400.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Mouse", "registryValue": "MouseHoverTime", "valueType": "String", "onValue": "10", "offValue": "400" }
+      ]
+    },
+    {
+      "id": "explorer_pro",
+      "name": "Проводник Pro",
+      "icon": "🗂️",
+      "tweaks": [
+        { "id": "full_path_title", "name": "Полный путь в заголовке окна", "description": "Показывает полный путь к папке в title bar.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\CabinetState", "registryValue": "FullPath", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "hide_gallery", "name": "Скрыть Галерею (Win11)", "description": "Убирает раздел Галерея из левой панели.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "ShowGallery", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "hide_home", "name": "Скрыть «Главная» (Win11)", "description": "Убирает раздел Главная из левой панели.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "ShowHome", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "default_view_details", "name": "Вид папок по умолчанию — «Таблица»", "description": "Все папки открываются в виде таблицы.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\Shell\\Bags\\AllFolders\\Shell", "registryValue": "Mode", "valueType": "DWord", "onValue": "4", "offValue": "3" },
+        { "id": "no_anim_explorer", "name": "Отключить анимации Проводника", "description": "Мгновенное открытие/закрытие окон.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects", "registryValue": "VisualFXSetting", "valueType": "DWord", "onValue": "2", "offValue": "0", "requiresReboot": true },
+        { "id": "disable_recent_jumplist", "name": "Отключить недавние в Jump List", "description": "Не показывать недавние файлы при клике правой кнопкой на иконку в панели задач.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "Start_TrackDocs", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "open_new_folder_window", "name": "Открывать папки в новом окне", "description": "Каждый клик по папке открывает новое окно Проводника.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "SeparateProcess", "valueType": "DWord", "onValue": "1", "offValue": "0", "requiresReboot": true },
+        { "id": "hide_network_nav", "name": "Скрыть «Сеть» в боковой панели", "description": "Убирает раздел Сеть.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "ShowNetwork", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "disable_search_recent", "name": "Не искать в недавних файлах", "description": "Проводник не ищет в истории.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "Start_TrackDocs", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "disable_thumbnail_preview", "name": "Отключить превью-миниатюры", "description": "Иконки вместо превью картинок. Быстрее работает.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "IconsOnly", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "no_internet_folder", "name": "Скрыть «Сеть» в папке «Этот компьютер»", "description": "Убирает раздел Сеть на главной странице проводника.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\NonEnum", "registryValue": "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}", "valueType": "DWord", "onValue": "1", "offValue": "0" }
+      ]
+    },
+    {
+      "id": "privacy_pro",
+      "name": "Приватность Pro",
+      "icon": "🕵️",
+      "tweaks": [
+        { "id": "handwriting_off", "name": "Отключить сбор данных о рукописном вводе", "description": "Запрещает Windows отправлять образцы почерка.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\InputPersonalization", "registryValue": "RestrictImplicitTextCollection", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "handwriting_ink_off", "name": "Отключить сбор рукописного ввода (ink)", "description": "RestrictImplicitInkCollection = 1.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\InputPersonalization", "registryValue": "RestrictImplicitInkCollection", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "speech_telemetry_off", "name": "Отключить сбор данных о речи", "description": "Запрещает отправку голосовых данных в Microsoft.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Speech_OneCore\\Settings\\OnlineSpeechPrivacy", "registryValue": "HasAccepted", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "ink_typing_off", "name": "Отключить «Улучшение рукописного ввода»", "description": "Отключает персонализацию ввода.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Personalization\\Settings", "registryValue": "AcceptedPrivacyPolicy", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "step_recorder_off", "name": "Отключить Steps Recorder", "description": "Убирает утилиту для записи шагов.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat", "registryValue": "DisableUAR", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "error_reporting_off", "name": "Отключить Windows Error Reporting (полностью)", "description": "Не отправляет отчёты об ошибках в Microsoft.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting", "registryValue": "Disabled", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "upload_error_reports_off", "name": "Не отправлять отчёты об ошибках", "description": "DontSendAdditionalData = 1.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting", "registryValue": "DontSendAdditionalData", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "ceip_off", "name": "Отключить Customer Experience Improvement", "description": "Отключает участие в программе улучшения.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\SQMClient\\Windows", "registryValue": "CEIPEnable", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "app_telemetry_off", "name": "Запретить приложениям запускать телеметрию", "description": "Отключает сбор данных через фоновые приложения.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy", "registryValue": "LetAppsRunInBackground", "valueType": "DWord", "onValue": "2", "offValue": "0", "risky": true },
+        { "id": "publish_activities_off", "name": "Не публиковать активности в облаке", "description": "Запрещает синхронизацию истории.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "registryValue": "PublishUserActivities", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "defender_submit_samples_off", "name": "Defender: не отправлять образцы", "description": "Отключает автоматическую отправку подозрительных файлов.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet", "registryValue": "SubmitSamplesConsent", "valueType": "DWord", "onValue": "2", "offValue": "1" },
+        { "id": "disable_cortana_search", "name": "Запретить Cortana в поиске", "description": "Полностью убирает Cortana из Search UI.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search", "registryValue": "AllowCortana", "valueType": "DWord", "onValue": "0", "offValue": "1" }
+      ]
+    },
+    {
+      "id": "network_pro",
+      "name": "Сеть Pro",
+      "icon": "📡",
+      "tweaks": [
+        { "id": "dns_cloudflare", "name": "DNS → Cloudflare (1.1.1.1)", "description": "Быстрый приватный DNS. Требует сброса адаптера.", "type": "Command", "onCommand": "netsh interface ip set dns name=\"Ethernet\" static 1.1.1.1 primary & netsh interface ip add dns name=\"Ethernet\" 1.0.0.1 index=2", "offCommand": "netsh interface ip set dns name=\"Ethernet\" dhcp", "risky": true },
+        { "id": "dns_google", "name": "DNS → Google (8.8.8.8)", "description": "Стабильный DNS от Google.", "type": "Command", "onCommand": "netsh interface ip set dns name=\"Ethernet\" static 8.8.8.8 primary & netsh interface ip add dns name=\"Ethernet\" 8.8.4.4 index=2", "offCommand": "netsh interface ip set dns name=\"Ethernet\" dhcp", "risky": true },
+        { "id": "dns_quad9", "name": "DNS → Quad9 (9.9.9.9)", "description": "Приватный DNS с блокировкой вредоносных доменов.", "type": "Command", "onCommand": "netsh interface ip set dns name=\"Ethernet\" static 9.9.9.9 primary & netsh interface ip add dns name=\"Ethernet\" 149.112.112.112 index=2", "offCommand": "netsh interface ip set dns name=\"Ethernet\" dhcp", "risky": true },
+        { "id": "dns_adguard", "name": "DNS → AdGuard (94.140.14.14)", "description": "DNS с блокировкой рекламы и трекеров.", "type": "Command", "onCommand": "netsh interface ip set dns name=\"Ethernet\" static 94.140.14.14 primary & netsh interface ip add dns name=\"Ethernet\" 94.140.15.15 index=2", "offCommand": "netsh interface ip set dns name=\"Ethernet\" dhcp", "risky": true },
+        { "id": "disable_wifi_sense", "name": "Отключить Wi-Fi Sense", "description": "Прекращает автоматический обмен паролями Wi-Fi с контактами.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\WcmSvc\\wifinetworkmanager\\config", "registryValue": "AutoConnectAllowedOEM", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "disable_wifi_autoconnect_hotspot", "name": "Не подключаться к хот-спотам автоматически", "description": "Запрещает авто-подключение к открытым Wi-Fi.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\WcmSvc\\wifinetworkmanager\\config", "registryValue": "WiFiSenseHotspotAutoConnect", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "disable_multicast", "name": "Отключить IGMP Multicast", "description": "Снижает трафик в локальной сети.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", "registryValue": "IGMPLevel", "valueType": "DWord", "onValue": "0", "offValue": "2", "requiresReboot": true },
+        { "id": "disable_ipv6_tunnel", "name": "Отключить IPv6-туннели", "description": "Запрещает Teredo, ISATAP, 6to4. Снижает уязвимости.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters", "registryValue": "DisabledComponents", "valueType": "DWord", "onValue": "255", "offValue": "0", "risky": true, "requiresReboot": true },
+        { "id": "disable_llmnr", "name": "Отключить LLMNR", "description": "Link-Local Multicast Name Resolution. Снижает уязвимости локальной сети.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient", "registryValue": "EnableMulticast", "valueType": "DWord", "onValue": "0", "offValue": "1", "requiresReboot": true },
+        { "id": "disable_dns_over_https", "name": "Отключить DNS over HTTPS", "description": "Возвращает обычный DNS. Для тех, у кого DoH ломает инет.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Dnscache\\Parameters", "registryValue": "EnableAutoDoh", "valueType": "DWord", "onValue": "0", "offValue": "2", "requiresReboot": true },
+        { "id": "optimize_nic", "name": "Оптимизация NIC (для игр)", "description": "netsh int tcp set global autotuninglevel=normal + rss=enable + ecncapability=disabled.", "type": "Command", "onCommand": "netsh int tcp set global autotuninglevel=normal & netsh int tcp set global rss=enabled & netsh int tcp set global ecncapability=disabled & netsh int tcp set global timestamps=disabled", "offCommand": "netsh int tcp set global autotuninglevel=normal & netsh int tcp set global rss=default & netsh int tcp set global ecncapability=default", "risky": true }
+      ]
+    },
+    {
+      "id": "privacy",
+      "name": "Приватность и телеметрия",
+      "icon": "🔒",
+      "tweaks": [
+        { "id": "telemetry_policy", "name": "Отключить телеметрию (политика)", "description": "AllowTelemetry = 0. Работает на Pro/Enterprise.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection", "registryValue": "AllowTelemetry", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "telemetry_security", "name": "Запретить телеметрию безопасности", "description": "LimitDiagnosticLogCollection = 1.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection", "registryValue": "LimitDiagnosticLogCollection", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "diagtrack_service", "name": "Отключить службу DiagTrack", "description": "Connected User Experiences and Telemetry.", "type": "Command", "onCommand": "sc stop DiagTrack & sc config DiagTrack start=disabled", "offCommand": "sc config DiagTrack start=auto & sc start DiagTrack", "risky": true },
+        { "id": "dmwappush", "name": "Отключить dmwappushservice", "description": "WAP Push Message Routing Service.", "type": "Command", "onCommand": "sc stop dmwappushservice & sc config dmwappushservice start=disabled", "offCommand": "sc config dmwappushservice start=auto", "risky": true },
+        { "id": "advertising_id", "name": "Отключить рекламный ID", "description": "Enabled = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo", "registryValue": "Enabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "activity_feed", "name": "Отключить историю активности", "description": "EnableActivityFeed = 0.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "registryValue": "EnableActivityFeed", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "feedback", "name": "Отключить запросы отзывов", "description": "NumberOfSIUFInPeriod = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Siuf\\Rules", "registryValue": "NumberOfSIUFInPeriod", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "silent_apps", "name": "Запретить автоустановку приложений", "description": "SilentInstalledAppsEnabled = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "registryValue": "SilentInstalledAppsEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "consumer_features", "name": "Отключить предложения Windows", "description": "DisableWindowsConsumerFeatures = 1.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent", "registryValue": "DisableWindowsConsumerFeatures", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "location_tracking", "name": "Отключить службу геолокации", "description": "Deny для всех приложений.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location", "registryValue": "Value", "valueType": "String", "onValue": "Deny", "offValue": "Allow" },
+        { "id": "camera_consent", "name": "Запретить доступ к камере", "description": "Все приложения потеряют доступ к камере.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\webcam", "registryValue": "Value", "valueType": "String", "onValue": "Deny", "offValue": "Allow", "risky": true },
+        { "id": "mic_consent", "name": "Запретить доступ к микрофону", "description": "Все приложения потеряют доступ к микрофону.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\microphone", "registryValue": "Value", "valueType": "String", "onValue": "Deny", "offValue": "Allow", "risky": true }
+      ]
+    },
+    {
+      "id": "performance",
+      "name": "Производительность",
+      "icon": "⚡",
+      "tweaks": [
+        { "id": "hags", "name": "HAGS (аппаратное планирование GPU)", "description": "Снижает задержки GPU. Нужен совместимый драйвер.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers", "registryValue": "HwSchMode", "valueType": "DWord", "onValue": "2", "offValue": "1", "requiresReboot": true },
+        { "id": "menu_delay", "name": "Убрать задержку меню", "description": "MenuShowDelay = 0.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Desktop", "registryValue": "MenuShowDelay", "valueType": "String", "onValue": "0", "offValue": "400" },
+        { "id": "hung_timeout", "name": "Быстро убивать зависшие приложения", "description": "HungAppTimeout = 1000 мс.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Desktop", "registryValue": "HungAppTimeout", "valueType": "String", "onValue": "1000", "offValue": "5000" },
+        { "id": "wait_kill_app", "name": "Быстро завершать приложения", "description": "WaitToKillAppTimeout = 2000.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Desktop", "registryValue": "WaitToKillAppTimeout", "valueType": "String", "onValue": "2000", "offValue": "20000" },
+        { "id": "sysmain_off", "name": "Отключить SysMain (Superfetch)", "description": "Полезно для SSD.", "type": "Command", "onCommand": "sc stop SysMain & sc config SysMain start=disabled", "offCommand": "sc config SysMain start=auto & sc start SysMain", "risky": true },
+        { "id": "win32_priority", "name": "Приоритет foreground-программ", "description": "Win32PrioritySeparation = 38.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\PriorityControl", "registryValue": "Win32PrioritySeparation", "valueType": "DWord", "onValue": "38", "offValue": "2", "requiresReboot": true },
+        { "id": "system_responsiveness", "name": "System Responsiveness = 10%", "description": "Уменьшает мультимедиа-резерв CPU.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile", "registryValue": "SystemResponsiveness", "valueType": "DWord", "onValue": "10", "offValue": "20", "requiresReboot": true },
+        { "id": "network_throttling", "name": "Отключить сетевой throttling", "description": "NetworkThrottlingIndex = 0xFFFFFFFF.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile", "registryValue": "NetworkThrottlingIndex", "valueType": "DWord", "onValue": "4294967295", "offValue": "10", "requiresReboot": true },
+        { "id": "paging_executive", "name": "Держать ядро в RAM", "description": "DisablePagingExecutive = 1. Только для 16+ ГБ RAM.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management", "registryValue": "DisablePagingExecutive", "valueType": "DWord", "onValue": "1", "offValue": "0", "risky": true, "requiresReboot": true },
+        { "id": "ultimate_perf", "name": "Схема Ultimate Performance", "description": "Активирует скрытую схему максимальной производительности.", "type": "Command", "onCommand": "powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61", "offCommand": "powercfg -setactive 381b4222-f694-41f0-9685-ff5bb260df2e" }
+      ]
+    },
+    {
+      "id": "gaming",
+      "name": "Геймерские",
+      "icon": "🎮",
+      "tweaks": [
+        { "id": "gamedvr_off", "name": "Отключить Game DVR", "description": "Убирает фоновую запись Game Bar.", "type": "Registry", "registryPath": "HKCU\\System\\GameConfigStore", "registryValue": "GameDVR_Enabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "app_capture", "name": "Отключить фоновую запись", "description": "AppCaptureEnabled = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameDVR", "registryValue": "AppCaptureEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "gamedvr_policy", "name": "Запретить Game DVR (политика)", "description": "AllowGameDVR = 0.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR", "registryValue": "AllowGameDVR", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "fse_disable", "name": "Отключить оптимизации полного экрана", "description": "GameDVR_FSEBehaviorMode = 2.", "type": "Registry", "registryPath": "HKCU\\System\\GameConfigStore", "registryValue": "GameDVR_FSEBehaviorMode", "valueType": "DWord", "onValue": "2", "offValue": "0", "requiresReboot": true },
+        { "id": "gpu_priority", "name": "GPU Priority = 8 для игр", "description": "Максимальный приоритет GPU для игровых процессов.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games", "registryValue": "GPU Priority", "valueType": "DWord", "onValue": "8", "offValue": "8", "requiresReboot": true },
+        { "id": "game_priority", "name": "Priority = 6 для игр", "description": "Высокий приоритет игровых процессов.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games", "registryValue": "Priority", "valueType": "DWord", "onValue": "6", "offValue": "2", "requiresReboot": true },
+        { "id": "xbox_auth_off", "name": "Отключить Xbox Live Auth Manager", "description": "Если не играешь в игры Microsoft Store.", "type": "Command", "onCommand": "sc stop XblAuthManager & sc config XblAuthManager start=disabled", "offCommand": "sc config XblAuthManager start=manual", "risky": true },
+        { "id": "xbox_save_off", "name": "Отключить Xbox Live Game Save", "description": "Служба сохранений Xbox Live.", "type": "Command", "onCommand": "sc stop XblGameSave & sc config XblGameSave start=disabled", "offCommand": "sc config XblGameSave start=manual", "risky": true },
+        { "id": "game_mode_on", "name": "Включить Game Mode", "description": "AutoGameModeEnabled = 1.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\GameBar", "registryValue": "AutoGameModeEnabled", "valueType": "DWord", "onValue": "1", "offValue": "0" }
+      ]
+    },
+    {
+      "id": "network",
+      "name": "Сеть и интернет",
+      "icon": "🌐",
+      "tweaks": [
+        { "id": "tcp_nodelay", "name": "TCP NoDelay", "description": "Снижает ping.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", "registryValue": "TcpNoDelay", "valueType": "DWord", "onValue": "1", "offValue": "0", "requiresReboot": true },
+        { "id": "tcp_ack", "name": "TCP AckFrequency = 1", "description": "Уменьшает задержки в играх.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", "registryValue": "TcpAckFrequency", "valueType": "DWord", "onValue": "1", "offValue": "2", "requiresReboot": true },
+        { "id": "default_ttl", "name": "DefaultTTL = 64", "description": "Оптимальное значение TTL.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters", "registryValue": "DefaultTTL", "valueType": "DWord", "onValue": "64", "offValue": "128", "requiresReboot": true },
+        { "id": "disable_ipv6", "name": "Отключить IPv6", "description": "Иногда ускоряет интернет.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters", "registryValue": "DisabledComponents", "valueType": "DWord", "onValue": "255", "offValue": "0", "risky": true, "requiresReboot": true },
+        { "id": "reset_winsock", "name": "Сбросить сетевой стек", "description": "netsh winsock reset + int ip reset.", "type": "Command", "onCommand": "netsh winsock reset & netsh int ip reset", "offCommand": "echo Одноразовая операция", "risky": true, "requiresReboot": true },
+        { "id": "delivery_optimization_off", "name": "Отключить Delivery Optimization", "description": "Прекращает раздачу обновлений другим ПК.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config", "registryValue": "DODownloadMode", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "qos_reserved_bandwidth", "name": "Освободить 20% канала QoS", "description": "NonBestEffortLimit = 0.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Psched", "registryValue": "NonBestEffortLimit", "valueType": "DWord", "onValue": "0", "offValue": "20", "requiresReboot": true },
+        { "id": "smb1_disable", "name": "Отключить SMB1", "description": "SMB1 устарел и опасен.", "type": "Command", "onCommand": "powershell -Command \"Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force\"", "offCommand": "powershell -Command \"Set-SmbServerConfiguration -EnableSMB1Protocol $true -Force\"", "risky": true, "requiresReboot": true }
+      ]
+    },
+    {
+      "id": "ui",
+      "name": "Интерфейс",
+      "icon": "🎨",
+      "tweaks": [
+        { "id": "bing_start", "name": "Убрать Bing в поиске Пуск", "description": "DisableSearchBoxSuggestions = 1.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer", "registryValue": "DisableSearchBoxSuggestions", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "transparency_off", "name": "Отключить прозрачность", "description": "Отключает акрил/Mica.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "registryValue": "EnableTransparency", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "visual_fx_perf", "name": "Визуальные эффекты → Быстродействие", "description": "VisualFXSetting = 2.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects", "registryValue": "VisualFXSetting", "valueType": "DWord", "onValue": "2", "offValue": "0", "requiresReboot": true },
+        { "id": "dark_mode_apps", "name": "Тёмная тема приложений", "description": "AppsUseLightTheme = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "registryValue": "AppsUseLightTheme", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "dark_mode_system", "name": "Тёмная тема системы", "description": "SystemUsesLightTheme = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "registryValue": "SystemUsesLightTheme", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "win11_old_menu", "name": "Старое контекстное меню (Win11)", "description": "Убирает «Показать дополнительные параметры».", "type": "Registry", "registryPath": "HKCU\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32", "registryValue": "", "valueType": "String", "onValue": "", "offValue": "", "requiresReboot": true },
+        { "id": "shortcut_suffix", "name": "Убрать «— ярлык»", "description": "link = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer", "registryValue": "link", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "widgets_off", "name": "Отключить виджеты (Win11)", "description": "AllowNewsAndInterests = 0.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Dsh", "registryValue": "AllowNewsAndInterests", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "taskbar_left_align", "name": "Панель задач слева (Win11)", "description": "TaskbarAl = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "TaskbarAl", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "show_seconds_taskbar", "name": "Секунды в часах", "description": "ShowSecondsInSystemClock = 1.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "ShowSecondsInSystemClock", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "end_task_on_taskbar", "name": "End Task через панель задач", "description": "Правый клик → Завершить задачу.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings", "registryValue": "TaskbarEndTask", "valueType": "DWord", "onValue": "1", "offValue": "0" }
+      ]
+    },
+    {
+      "id": "explorer",
+      "name": "Проводник",
+      "icon": "📁",
+      "tweaks": [
+        { "id": "show_extensions", "name": "Показывать расширения файлов", "description": "HideFileExt = 0.", "type": "Registry", "registryPath": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "HideFileExt", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "show_hidden", "name": "Показывать скрытые файлы", "description": "Hidden = 1.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "Hidden", "valueType": "DWord", "onValue": "1", "offValue": "2" },
+        { "id": "show_superhidden", "name": "Показывать системные файлы", "description": "ShowSuperHidden = 1.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "ShowSuperHidden", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "open_this_pc", "name": "Открывать «Этот компьютер»", "description": "LaunchTo = 1.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "LaunchTo", "valueType": "DWord", "onValue": "1", "offValue": "2" },
+        { "id": "compact_mode", "name": "Компактный режим Проводника", "description": "UseCompactMode = 1.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "UseCompactMode", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "taskbar_search_icon", "name": "Поиск — только иконка", "description": "SearchboxTaskbarMode = 1.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Search", "registryValue": "SearchboxTaskbarMode", "valueType": "DWord", "onValue": "1", "offValue": "2" },
+        { "id": "taskbar_taskview_hide", "name": "Скрыть «Представление задач»", "description": "ShowTaskViewButton = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "ShowTaskViewButton", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "taskbar_widgets_off", "name": "Скрыть виджеты (Win11)", "description": "TaskbarDa = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "TaskbarDa", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "taskbar_chat_off", "name": "Скрыть «Чат» (Win11)", "description": "TaskbarMn = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced", "registryValue": "TaskbarMn", "valueType": "DWord", "onValue": "0", "offValue": "1" }
+      ]
+    },
+    {
+      "id": "services",
+      "name": "Службы Windows",
+      "icon": "⚙️",
+      "tweaks": [
+        { "id": "wsearch_off", "name": "Отключить Windows Search", "description": "Индексация поиска.", "type": "Command", "onCommand": "sc stop WSearch & sc config WSearch start=disabled", "offCommand": "sc config WSearch start=delayed-auto & sc start WSearch", "risky": true },
+        { "id": "remote_registry", "name": "Отключить Remote Registry", "description": "Удалённое редактирование реестра.", "type": "Command", "onCommand": "sc stop RemoteRegistry & sc config RemoteRegistry start=disabled", "offCommand": "sc config RemoteRegistry start=demand" },
+        { "id": "wersvc_off", "name": "Отключить Windows Error Reporting", "description": "WerSvc — отправка отчётов.", "type": "Command", "onCommand": "sc stop WerSvc & sc config WerSvc start=disabled", "offCommand": "sc config WerSvc start=demand" },
+        { "id": "fax_off", "name": "Отключить Fax", "description": "Старая служба факсов.", "type": "Command", "onCommand": "sc stop Fax & sc config Fax start=disabled", "offCommand": "sc config Fax start=demand" },
+        { "id": "maps_broker", "name": "Отключить MapsBroker", "description": "Downloaded Maps Manager.", "type": "Command", "onCommand": "sc stop MapsBroker & sc config MapsBroker start=disabled", "offCommand": "sc config MapsBroker start=auto" },
+        { "id": "lfsvc_off", "name": "Отключить Geolocation Service", "description": "Служба геолокации.", "type": "Command", "onCommand": "sc stop lfsvc & sc config lfsvc start=disabled", "offCommand": "sc config lfsvc start=manual" },
+        { "id": "print_spooler_off", "name": "Отключить Print Spooler", "description": "Fix для PrintNightmare. Только если нет принтера.", "type": "Command", "onCommand": "sc stop Spooler & sc config Spooler start=disabled", "offCommand": "sc config Spooler start=auto & sc start Spooler", "risky": true }
+      ]
+    },
+    {
+      "id": "ssd",
+      "name": "SSD и диски",
+      "icon": "💾",
+      "tweaks": [
+        { "id": "disable_last_access", "name": "Отключить last access time", "description": "Снижает износ SSD.", "type": "Command", "onCommand": "fsutil behavior set disablelastaccess 1", "offCommand": "fsutil behavior set disablelastaccess 0" },
+        { "id": "prefetch_off", "name": "Отключить Prefetch (SSD)", "description": "EnablePrefetcher = 0.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management\\PrefetchParameters", "registryValue": "EnablePrefetcher", "valueType": "DWord", "onValue": "0", "offValue": "3", "risky": true, "requiresReboot": true },
+        { "id": "superfetch_off", "name": "Отключить Superfetch (SSD)", "description": "EnableSuperfetch = 0.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management\\PrefetchParameters", "registryValue": "EnableSuperfetch", "valueType": "DWord", "onValue": "0", "offValue": "3", "requiresReboot": true },
+        { "id": "defrag_ssd_off", "name": "Отключить авто-дефраг SSD", "description": "Продлевает жизнь SSD.", "type": "Command", "onCommand": "schtasks /Change /TN \"Microsoft\\Windows\\Defrag\\ScheduledDefrag\" /Disable", "offCommand": "schtasks /Change /TN \"Microsoft\\Windows\\Defrag\\ScheduledDefrag\" /Enable" },
+        { "id": "trim_enable", "name": "Включить TRIM", "description": "fsutil DisableDeleteNotify 0.", "type": "Command", "onCommand": "fsutil behavior set DisableDeleteNotify 0", "offCommand": "fsutil behavior set DisableDeleteNotify 1" }
+      ]
+    },
+    {
+      "id": "updates",
+      "name": "Обновления Windows",
+      "icon": "🔄",
+      "tweaks": [
+        { "id": "no_auto_update", "name": "Отключить автообновление", "description": "NoAutoUpdate = 1.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU", "registryValue": "NoAutoUpdate", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "no_driver_updates", "name": "Запретить обновления драйверов", "description": "ExcludeWUDriversInQualityUpdate = 1.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate", "registryValue": "ExcludeWUDriversInQualityUpdate", "valueType": "DWord", "onValue": "1", "offValue": "0" },
+        { "id": "no_restart_notifications", "name": "Отключить уведомления о перезагрузке", "description": "NoAutoRebootWithLoggedOnUsers = 1.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU", "registryValue": "NoAutoRebootWithLoggedOnUsers", "valueType": "DWord", "onValue": "1", "offValue": "0" }
+      ]
+    },
+    {
+      "id": "power",
+      "name": "Питание",
+      "icon": "🔌",
+      "tweaks": [
+        { "id": "hibernate_off", "name": "Отключить гибернацию", "description": "Освобождает hiberfil.sys.", "type": "Command", "onCommand": "powercfg /h off", "offCommand": "powercfg /h on", "risky": true },
+        { "id": "power_throttling", "name": "Отключить Power Throttling", "description": "PowerThrottlingOff = 1.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power\\PowerThrottling", "registryValue": "PowerThrottlingOff", "valueType": "DWord", "onValue": "1", "offValue": "0", "requiresReboot": true },
+        { "id": "fast_startup_off", "name": "Отключить быстрый запуск", "description": "HiberbootEnabled = 0.", "type": "Registry", "registryPath": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Power", "registryValue": "HiberbootEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1", "requiresReboot": true },
+        { "id": "sleep_disable_ac", "name": "Запретить сон от сети", "description": "standby-timeout-ac = 0.", "type": "Command", "onCommand": "powercfg /change standby-timeout-ac 0", "offCommand": "powercfg /change standby-timeout-ac 30" },
+        { "id": "monitor_timeout_off", "name": "Отключить гашение монитора", "description": "monitor-timeout-ac = 0.", "type": "Command", "onCommand": "powercfg /change monitor-timeout-ac 0", "offCommand": "powercfg /change monitor-timeout-ac 10" }
+      ]
+    },
+    {
+      "id": "security",
+      "name": "UAC и безопасность",
+      "icon": "🛡️",
+      "tweaks": [
+        { "id": "uac_prompt_no_secure_desktop", "name": "UAC: не затемнять экран", "description": "PromptOnSecureDesktop = 0.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "registryValue": "PromptOnSecureDesktop", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "uac_disable_entirely", "name": "Полностью отключить UAC", "description": "EnableLUA = 0. Опасно!", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System", "registryValue": "EnableLUA", "valueType": "DWord", "onValue": "0", "offValue": "1", "risky": true, "requiresReboot": true },
+        { "id": "smartscreen_off", "name": "Отключить SmartScreen", "description": "EnableSmartScreen = 0.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "registryValue": "EnableSmartScreen", "valueType": "DWord", "onValue": "0", "offValue": "1", "risky": true },
+        { "id": "autorun_off", "name": "Отключить AutoRun", "description": "NoDriveTypeAutoRun = 255.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer", "registryValue": "NoDriveTypeAutoRun", "valueType": "DWord", "onValue": "255", "offValue": "145" },
+        { "id": "defender_realtime_off", "name": "Отключить realtime-защиту Defender", "description": "Не рекомендуется. Опасно!", "type": "Command", "onCommand": "powershell -Command \"Set-MpPreference -DisableRealtimeMonitoring $true\"", "offCommand": "powershell -Command \"Set-MpPreference -DisableRealtimeMonitoring $false\"", "risky": true }
+      ]
+    },
+    {
+      "id": "sound",
+      "name": "Звук и аудио",
+      "icon": "🔊",
+      "tweaks": [
+        { "id": "system_sounds_off", "name": "Отключить системные звуки", "description": "Убирает «дзынь».", "type": "Registry", "registryPath": "HKCU\\AppEvents\\Schemes", "registryValue": ".Current", "valueType": "String", "onValue": ".None", "offValue": ".Default", "requiresReboot": true },
+        { "id": "audio_ducking_off", "name": "Отключить ducking", "description": "UserDuckingPreference = 3.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Multimedia\\Audio", "registryValue": "UserDuckingPreference", "valueType": "DWord", "onValue": "3", "offValue": "0" },
+        { "id": "startup_sound_off", "name": "Отключить звук при загрузке", "description": "DisableStartupSound = 1.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI\\BootAnimation", "registryValue": "DisableStartupSound", "valueType": "DWord", "onValue": "1", "offValue": "0" }
+      ]
+    },
+    {
+      "id": "mouse_kb",
+      "name": "Мышь и клавиатура",
+      "icon": "🖱️",
+      "tweaks": [
+        { "id": "mouse_accel_off", "name": "Отключить ускорение мыши", "description": "MouseSpeed = 0.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Mouse", "registryValue": "MouseSpeed", "valueType": "String", "onValue": "0", "offValue": "1" },
+        { "id": "mouse_accel_threshold", "name": "MouseThreshold1 = 0", "description": "Порог ускорения.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Mouse", "registryValue": "MouseThreshold1", "valueType": "String", "onValue": "0", "offValue": "6" },
+        { "id": "mouse_accel_threshold2", "name": "MouseThreshold2 = 0", "description": "Второй порог.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Mouse", "registryValue": "MouseThreshold2", "valueType": "String", "onValue": "0", "offValue": "10" },
+        { "id": "sticky_keys_off", "name": "Отключить залипание клавиш", "description": "Flags = 506.", "type": "Registry", "registryPath": "HKCU\\Control Panel\\Accessibility\\StickyKeys", "registryValue": "Flags", "valueType": "String", "onValue": "506", "offValue": "510" }
+      ]
+    },
+    {
+      "id": "ads_content",
+      "name": "Реклама и контент",
+      "icon": "🚫",
+      "tweaks": [
+        { "id": "start_suggestions_off", "name": "Отключить Suggested Apps в Пуске", "description": "SystemPaneSuggestionsEnabled = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "registryValue": "SystemPaneSuggestionsEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "settings_ads_off", "name": "Убрать рекламу в Параметрах", "description": "SubscribedContent-338393Enabled = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "registryValue": "SubscribedContent-338393Enabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "tips_off", "name": "Отключить подсказки Windows", "description": "SoftLandingEnabled = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "registryValue": "SoftLandingEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "timeline_suggestions_off", "name": "Убрать подсказки Timeline", "description": "SubscribedContent-353698Enabled = 0.", "type": "Registry", "registryPath": "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "registryValue": "SubscribedContent-353698Enabled", "valueType": "DWord", "onValue": "0", "offValue": "1" }
+      ]
+    },
+    {
+      "id": "edge_bing",
+      "name": "Edge и Bing",
+      "icon": "🌍",
+      "tweaks": [
+        { "id": "edge_preload_off", "name": "Отключить предзагрузку Edge", "description": "AllowPrelaunch = 0.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\MicrosoftEdge\\Main", "registryValue": "AllowPrelaunch", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "edge_startup_boost_off", "name": "Отключить Startup Boost Edge", "description": "StartupBoostEnabled = 0.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\MicrosoftEdge\\Main", "registryValue": "StartupBoostEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "edge_background_off", "name": "Запретить фоновые расширения Edge", "description": "BackgroundModeEnabled = 0.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\MicrosoftEdge", "registryValue": "BackgroundModeEnabled", "valueType": "DWord", "onValue": "0", "offValue": "1" },
+        { "id": "edge_firstrun_off", "name": "Отключить первый запуск Edge", "description": "HideFirstRunExperience = 1.", "type": "Registry", "registryPath": "HKLM\\SOFTWARE\\Policies\\Microsoft\\MicrosoftEdge", "registryValue": "HideFirstRunExperience", "valueType": "DWord", "onValue": "1", "offValue": "0" }
+      ]
+    }
+  ]
+}

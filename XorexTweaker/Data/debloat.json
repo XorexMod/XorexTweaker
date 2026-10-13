@@ -1,0 +1,23 @@
+{
+  "packages": [
+    { "packageName": "Microsoft.BingWeather", "friendlyName": "Погода (Bing)", "description": "UWP-приложение Погода" },
+    { "packageName": "Microsoft.BingNews", "friendlyName": "Новости (Bing)", "description": "UWP-приложение Новости" },
+    { "packageName": "Microsoft.GetHelp", "friendlyName": "Получить помощь", "description": "Приложение поддержки" },
+    { "packageName": "Microsoft.Getstarted", "friendlyName": "Советы", "description": "Приложение «Начало работы»" },
+    { "packageName": "Microsoft.MicrosoftOfficeHub", "friendlyName": "Office Hub", "description": "Реклама Office" },
+    { "packageName": "Microsoft.MicrosoftSolitaireCollection", "friendlyName": "Косынка", "description": "Игра" },
+    { "packageName": "Microsoft.People", "friendlyName": "Люди", "description": "Контакты" },
+    { "packageName": "Microsoft.SkypeApp", "friendlyName": "Skype", "description": "Skype UWP" },
+    { "packageName": "Microsoft.WindowsFeedbackHub", "friendlyName": "Центр отзывов", "description": "Сбор отзывов" },
+    { "packageName": "Microsoft.WindowsMaps", "friendlyName": "Карты", "description": "Карты Windows" },
+    { "packageName": "Microsoft.Xbox.TCUI", "friendlyName": "Xbox TCUI", "description": "Xbox UI" },
+    { "packageName": "Microsoft.XboxApp", "friendlyName": "Xbox", "description": "Xbox приложение" },
+    { "packageName": "Microsoft.XboxGameOverlay", "friendlyName": "Xbox Game Overlay", "description": "Оверлей" },
+    { "packageName": "Microsoft.XboxGamingOverlay", "friendlyName": "Xbox Game Bar", "description": "Игровая панель" },
+    { "packageName": "Microsoft.XboxIdentityProvider", "friendlyName": "Xbox Identity", "description": "Аутентификация Xbox" },
+    { "packageName": "Microsoft.XboxSpeechToTextOverlay", "friendlyName": "Xbox Speech", "description": "Речь в оверлее" },
+    { "packageName": "Microsoft.YourPhone", "friendlyName": "Связь с телефоном", "description": "Phone Link" },
+    { "packageName": "Microsoft.ZuneMusic", "friendlyName": "Groove Music", "description": "Музыка" },
+    { "packageName": "Microsoft.ZuneVideo", "friendlyName": "Фильмы и ТВ", "description": "Видео" }
+  ]
+}

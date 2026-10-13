@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>XorexTweaker</AssemblyName>
+    <RootNamespace>XorexTweaker</RootNamespace>
+    <Version>0.1.0</Version>
+    <Authors>XorexMod</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <LangVersion>latest</LangVersion>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <PublishReadyToRun>false</PublishReadyToRun>
+
+    <!-- ===== Portable / Single-file publish ===== -->
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DebugType>embedded</DebugType>
+    <PublishTrimmed>false</PublishTrimmed>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Data вшивается в .exe как встроенные ресурсы -->
+    <EmbeddedResource Include="Data\tweaks.json" />
+    <EmbeddedResource Include="Data\apps.json" />
+    <EmbeddedResource Include="Data\debloat.json" />
+
+    <!-- И копируется рядом с .exe при обычной сборке (для удобства разработки) -->
+    <None Update="Data\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Tools\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+
+    <Resource Include="app.ico" />
+  </ItemGroup>
+
+</Project>
