@@ -1,0 +1,10 @@
+XorexTweaker использует следующие сторонние проекты:
+
+1. Zapret (движок winws)
+   - Оригинал: https://github.com/bol-van/zapret
+   - Сборка:   https://github.com/flowseal/zapret-discord-youtube
+   License: MIT
+   Не входит в сборку, скачивается пользователем отдельно.
+
+2. Microsoft .NET (https://github.com/dotnet/runtime)
+   License: MIT
