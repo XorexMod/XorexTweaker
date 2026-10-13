@@ -1,0 +1,56 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#A29BFE"/>
+            <stop offset="50%" stop-color="#6C5CE7"/>
+            <stop offset="100%" stop-color="#4834D4"/>
+        </linearGradient>
+
+        <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+            <stop offset="60%" stop-color="#FFFFFF" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+        </radialGradient>
+
+        <linearGradient id="xGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="100%" stop-color="#F0EEFF"/>
+        </linearGradient>
+
+        <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+            <feOffset dx="0" dy="4" result="offsetblur"/>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.35"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- Основной квадрат с градиентом -->
+    <rect x="16" y="16" width="224" height="224" rx="56" ry="56"
+          fill="url(#bgGradient)"
+          filter="url(#softShadow)"/>
+
+    <!-- Тонкая внутренняя окантовка -->
+    <rect x="18" y="18" width="220" height="220" rx="54" ry="54"
+          fill="none"
+          stroke="rgba(255,255,255,0.15)"
+          stroke-width="1.5"/>
+
+    <!-- Мягкое свечение в центре -->
+    <circle cx="128" cy="128" r="60" fill="url(#centerGlow)" opacity="0.5"/>
+
+    <!-- Буква X -->
+    <path d="M 76 76 L 180 180 M 180 76 L 76 180"
+          stroke="url(#xGradient)"
+          stroke-width="22"
+          stroke-linecap="round"
+          fill="none"/>
+
+    <!-- Маленькая яркая точка в центре X -->
+    <circle cx="128" cy="128" r="6" fill="#FFFFFF" opacity="0.95"/>
+</svg>
